@@ -11,7 +11,7 @@ const router = express.Router();
 
 const authMiddlewares = [
   verifyToken,
-  allowedTo(employeeRoles.ADMIN, employeeSpecialization.DOCTOR),
+  allowedTo(employeeRoles.EMPLOYEE, employeeSpecialization.DOCTOR),
 ];
 
 const routes = [
