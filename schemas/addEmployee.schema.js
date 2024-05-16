@@ -6,7 +6,7 @@ const addEmployeeSchema = {
   properties: {
     id: {
       type: "string",
-      pattern: "^[0-9]{10}$",
+      pattern: "^[0-9]{14}$",
     },
     name: {
       type: "string",
@@ -39,10 +39,7 @@ const addEmployeeSchema = {
       ],
     },
     role: {
-      enum: [
-        employeeRoles.ADMIN,
-        employeeRoles.EMPLOYEE,
-      ],
+      enum: [employeeRoles.ADMIN, employeeRoles.EMPLOYEE],
     },
   },
   required: [

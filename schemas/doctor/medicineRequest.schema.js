@@ -3,16 +3,16 @@ const medicineRequestSchema = {
   properties: {
     patientId: {
       type: "integer",
-      pattern: "^[0-9]{10}$",
+      pattern: "^[0-9]{14}$",
     },
     doctorId: {
       type: "integer",
-      pattern: "^[0-9]{10}$",
+      pattern: "^[0-9]{14}$",
     },
     medicine: {
       type: "array",
       items: {
-        type: "integer"
+        type: "integer",
       },
     },
   },

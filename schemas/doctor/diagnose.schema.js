@@ -6,11 +6,11 @@ const diagnose = {
     },
     patientId: {
       type: "string",
-      pattern: "^[0-9]{10}$",
+      pattern: "^[0-9]{14}$",
     },
     doctorId: {
       type: "string",
-      pattern: "^[0-9]{10}$",
+      pattern: "^[0-9]{14}$",
     },
     diagnose: {
       type: "string",
@@ -21,15 +21,8 @@ const diagnose = {
       minLength: 2,
     },
   },
-  required: [
-    "patientId",
-    "doctorId",
-    "diagnose",
-    "prescription",
-  ],
+  required: ["patientId", "doctorId", "diagnose", "prescription"],
   additionalProperties: false,
 };
-
-
 
 module.exports = diagnose;

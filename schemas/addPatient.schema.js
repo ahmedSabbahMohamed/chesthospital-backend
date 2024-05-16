@@ -3,7 +3,7 @@ const addPatientSchema = {
   properties: {
     id: {
       type: "string",
-      pattern: "^[0-9]{10}$"
+      pattern: "^[0-9]{14}$",
     },
     name: {
       type: "string",
@@ -24,7 +24,7 @@ const addPatientSchema = {
     address: {
       type: "string",
       minLength: 1,
-    }
+    },
   },
   required: ["id", "name", "phone", "email", "dateOfBirth", "address"],
   additionalProperties: false,
