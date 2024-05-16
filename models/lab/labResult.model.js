@@ -9,6 +9,10 @@ const LabResult = sequelize.define("LabResult", {
     autoIncrement: true,
     primaryKey: true,
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   result: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -41,8 +45,8 @@ const LabResult = sequelize.define("LabResult", {
   },
 });
 
-LabResult.belongsTo(Patient, { foreignKey: 'patientId'});
-LabResult.belongsTo(Employee, { foreignKey: 'doctorId'});
+LabResult.belongsTo(Patient, { foreignKey: "patientId" });
+LabResult.belongsTo(Employee, { foreignKey: "doctorId" });
 
 LabResult.sync()
   .then(() => {

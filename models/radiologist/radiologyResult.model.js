@@ -9,16 +9,20 @@ const RadiologyResult = sequelize.define("RadiologyResult", {
     autoIncrement: true,
     primaryKey: true,
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   result: {
     type: DataTypes.STRING,
     allowNull: false,
     get() {
-      const rawValue = this.getDataValue('result');
-      return rawValue ? rawValue.split(',') : [];
+      const rawValue = this.getDataValue("result");
+      return rawValue ? rawValue.split(",") : [];
     },
     set(value) {
-      this.setDataValue('result', value.join(','));
-    }
+      this.setDataValue("result", value.join(","));
+    },
   },
   notes: {
     type: DataTypes.STRING,
