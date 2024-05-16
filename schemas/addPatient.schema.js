@@ -3,7 +3,7 @@ const addPatientSchema = {
   properties: {
     id: {
       type: "string",
-      pattern: "^[0-9]{14}$",
+      pattern: "^[0-9]{10}$",
     },
     name: {
       type: "string",

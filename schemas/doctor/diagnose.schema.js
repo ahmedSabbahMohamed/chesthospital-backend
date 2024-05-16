@@ -6,11 +6,11 @@ const diagnose = {
     },
     patientId: {
       type: "string",
-      pattern: "^[0-9]{14}$",
+      pattern: "^[0-9]{10}$",
     },
     doctorId: {
       type: "string",
-      pattern: "^[0-9]{14}$",
+      pattern: "^[0-9]{10}$",
     },
     diagnose: {
       type: "string",
