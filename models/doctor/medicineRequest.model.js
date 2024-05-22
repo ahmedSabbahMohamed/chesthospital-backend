@@ -29,11 +29,11 @@ const MedicineRequest = sequelize.define("MedicineRequest", {
     type: DataTypes.STRING,
     allowNull: false,
     get() {
-      const rawValue = this.getDataValue("result");
-      return rawValue ? rawValue.split(",") : [];
+      const rawValue = this.getDataValue("medicine");
+      return rawValue ? rawValue.split(",").map(Number) : [];
     },
     set(value) {
-      this.setDataValue("result", value.join(","));
+      this.setDataValue("medicine", value.join(","));
     },
   },
 });
