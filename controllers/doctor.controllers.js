@@ -1,6 +1,9 @@
 const asyncWrapper = require("../middlewares/asyncWrapper");
 const Patient = require("../models/patient.model");
 const Report = require("../models/doctor/diagnose.model");
+const RadiologyResult = require("../models/radiologist/radiologyResult.model");
+const LabResult = require("../models/lab/labResult.model");
+const Medicine = require("../models/pharmacist/medicine.model");
 const RadiologyRequest = require("../models/doctor/radiologyRequest.model");
 const ExitRequest = require("../models/doctor/exitRequest.model");
 const Consultation = require("../models/doctor/consultation.model");
@@ -27,6 +30,11 @@ const radiologyRequest = asyncWrapper(async (req, res, next) => {
     status: httppStatusText.SUCCESS,
     data: { radiology },
   });
+});
+
+const getMedicine = asyncWrapper(async (req, res, next) => {
+  const medicine = await Medicine.findAll();
+  return res.json({ status: httppStatusText.SUCCESS, data: medicine });
 });
 
 const exitRequest = asyncWrapper(async (req, res, next) => {
@@ -70,13 +78,23 @@ const requestMedicine = asyncWrapper(async (req, res, next) => {
 
 const getPatient = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
-  const patientInfo = await Patient.findOne({
+  const patient = await Patient.findOne({
     where: { id: id },
   });
-  const patientReport = await Report.findOne({
+  const reports = await Report.findAll({
     where: { patientId: id },
   });
-  if (!patientInfo) {
+  const radiologies = await RadiologyResult.findAll({
+    where: {
+      patientId: id,
+    },
+  });
+  const labs = await LabResult.findAll({
+    where: {
+      patientId: id,
+    },
+  });
+  if (!patient) {
     const error = appError.create(
       "patient not found",
       404,
@@ -86,7 +104,7 @@ const getPatient = asyncWrapper(async (req, res, next) => {
   }
   res.json({
     status: httppStatusText.SUCCESS,
-    data: { patientInfo, patientReport },
+    data: { patient, reports, radiologies, labs },
   });
 });
 
@@ -124,5 +142,6 @@ module.exports = {
   getPatient,
   labRequest,
   oxygenRequest,
+  getMedicine,
   // nursingRequest,
 };
