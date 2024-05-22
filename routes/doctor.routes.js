@@ -58,6 +58,12 @@ const routes = [
     handler: doctorControllers.oxygenRequest,
   },
   {
+    path: "/medicine",
+    method: "get",
+    middleware: [...authMiddlewares],
+    handler: doctorControllers.getMedicine,
+  },
+  {
     path: "/:id",
     method: "get",
     middleware: [...authMiddlewares],
