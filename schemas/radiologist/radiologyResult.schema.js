@@ -1,6 +1,9 @@
 const radiologyResultSchema = {
   type: "object",
   properties: {
+    name: {
+      type: "string",
+    },
     result: {
       type: "array",
     },
