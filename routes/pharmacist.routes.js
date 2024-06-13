@@ -26,6 +26,18 @@ const routes = [
     middleware: [...authMiddlewares],
     handler: pharmacistControllers.getMedicines,
   },
+  {
+    path: "/search",
+    method: "get",
+    middleware: [...authMiddlewares],
+    handler: pharmacistControllers.searchMedicine,
+  },
+  {
+    path: "/:id",
+    method: "delete",
+    middleware: [...authMiddlewares],
+    handler: pharmacistControllers.deleteMedicine,
+  },
 ];
 
 applyRoutes(router, routes);

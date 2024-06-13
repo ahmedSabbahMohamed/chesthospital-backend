@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../../config/db");
 const Employee = require("../employee.model");
+const Patient = require("../patient.model");
 
 const Consultation = sequelize.define("Consultation", {
   id: {
@@ -13,6 +14,14 @@ const Consultation = sequelize.define("Consultation", {
     allowNull: false,
     references: {
       model: Employee,
+      key: "id",
+    },
+  },
+  patientId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Patient,
       key: "id",
     },
   },
@@ -31,6 +40,7 @@ const Consultation = sequelize.define("Consultation", {
 });
 
 Consultation.belongsTo(Employee, { foreignKey: 'doctorId' });
+Consultation.belongsTo(Patient, { foreignKey: 'patientId' });
 
 Consultation.sync()
   .then(() => {

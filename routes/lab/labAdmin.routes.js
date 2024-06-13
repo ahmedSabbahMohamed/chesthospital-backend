@@ -15,12 +15,12 @@ const authMiddlewares = [
 ];
 
 const routes = [
-  {
-    path: "/",
-    method: "get",
-    middleware: [...authMiddlewares],
-    handler: labAdminControllers.getLabRequests,
-  },
+  // {
+  //   path: "/",
+  //   method: "get",
+  //   middleware: [...authMiddlewares],
+  //   handler: labAdminControllers.getLabRequests,
+  // },
   {
     path: "/",
     method: "post",
@@ -33,12 +33,12 @@ const routes = [
     middleware: [...authMiddlewares],
     handler: labAdminControllers.getCompletedTasks,
   },
-  {
-    path: "/:id",
-    method: "delete",
-    middleware: [...authMiddlewares],
-    handler: labAdminControllers.finishedTask,
-  },
+  // {
+  //   path: "/:id",
+  //   method: "delete",
+  //   middleware: [...authMiddlewares],
+  //   handler: labAdminControllers.finishedTask,
+  // },
 ];
 
 applyRoutes(router, routes);

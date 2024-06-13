@@ -1,8 +1,5 @@
 const asyncWrapper = require("../middlewares/asyncWrapper");
-const Patient = require("../models/patient.model");
 const Report = require("../models/doctor/diagnose.model");
-const RadiologyResult = require("../models/radiologist/radiologyResult.model");
-const LabResult = require("../models/lab/labResult.model");
 const Medicine = require("../models/pharmacist/medicine.model");
 const RadiologyRequest = require("../models/doctor/radiologyRequest.model");
 const ExitRequest = require("../models/doctor/exitRequest.model");
@@ -76,38 +73,6 @@ const requestMedicine = asyncWrapper(async (req, res, next) => {
     .json({ status: httppStatusText.SUCCESS, data: { medicine } });
 });
 
-const getPatient = asyncWrapper(async (req, res, next) => {
-  const { id } = req.params;
-  const patient = await Patient.findOne({
-    where: { id: id },
-  });
-  const reports = await Report.findAll({
-    where: { patientId: id },
-  });
-  const radiologies = await RadiologyResult.findAll({
-    where: {
-      patientId: id,
-    },
-  });
-  const labs = await LabResult.findAll({
-    where: {
-      patientId: id,
-    },
-  });
-  if (!patient) {
-    const error = appError.create(
-      "patient not found",
-      404,
-      httppStatusText.ERROR
-    );
-    return next(error);
-  }
-  res.json({
-    status: httppStatusText.SUCCESS,
-    data: { patient, reports, radiologies, labs },
-  });
-});
-
 const labRequest = asyncWrapper(async (req, res, next) => {
   const data = req.body;
   const request = await LabRequest.create(data);
@@ -139,7 +104,6 @@ module.exports = {
   exitRequest,
   consultationRequest,
   requestMedicine,
-  getPatient,
   labRequest,
   oxygenRequest,
   getMedicine,

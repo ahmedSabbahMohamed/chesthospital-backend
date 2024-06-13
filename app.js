@@ -13,6 +13,7 @@ const nurseRoutes = require("./routes/nursing/nurse.routes");
 const labAdminRoutes = require("./routes/lab/labAdmin.routes");
 const labEmployeeRoutes = require("./routes/lab/labEmployee.routes");
 const authRoutes = require("./routes/auth/login.routes");
+const sharedRoutes = require("./routes/sharedRoutes");
 const sequelize = require("./config/db");
 const httpStatusText = require("./utils/httpStatusText");
 const errorHandler = require("./middlewares/errorHandler");
@@ -43,6 +44,7 @@ app.use("/api/nurse", nurseRoutes);
 app.use("/api/lab-admin", labAdminRoutes);
 app.use("/api/lab", labEmployeeRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/shared", sharedRoutes)
 
 // Global error handler
 app.use(errorHandler);

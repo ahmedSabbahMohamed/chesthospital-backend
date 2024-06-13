@@ -11,7 +11,7 @@ const router = express.Router();
 
 const authMiddlewares = [
   verifyToken,
-  allowedTo(employeeRoles.EMPLOYEE, employeeSpecialization.DOCTOR),
+  allowedTo(employeeRoles.EMPLOYEE, employeeSpecialization.DOCTOR, employeeSpecialization.MANAGER),
 ];
 
 const routes = [
@@ -62,12 +62,6 @@ const routes = [
     method: "get",
     middleware: [...authMiddlewares],
     handler: doctorControllers.getMedicine,
-  },
-  {
-    path: "/:id",
-    method: "get",
-    middleware: [...authMiddlewares],
-    handler: doctorControllers.getPatient,
   },
 ];
 

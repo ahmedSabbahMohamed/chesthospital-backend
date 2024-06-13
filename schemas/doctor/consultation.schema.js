@@ -12,6 +12,9 @@ const consultationSchema = {
     doctorId: {
       type: "integer",
     },
+    patientId: {
+      type: "integer",
+    },
     hospital: {
       type: "string",
       minLength: 2,
@@ -23,7 +26,7 @@ const consultationSchema = {
       maxLength: 255,
     },
   },
-  required: ["name", "doctorId", "hospital", "specialization"],
+  required: ["name", "doctorId", "hospital", "specialization", "patientId"],
   additionalProperties: false,
 };
 

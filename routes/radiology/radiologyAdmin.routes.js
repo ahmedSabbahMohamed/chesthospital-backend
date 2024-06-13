@@ -15,12 +15,12 @@ const authMiddlewares = [
 ];
 
 const routes = [
-  {
-    path: "/",
-    method: "get",
-    middleware: [...authMiddlewares],
-    handler: radiologyAdminControllers.getRadiologyRequests,
-  },
+  // {
+  //   path: "/",
+  //   method: "get",
+  //   middleware: [...authMiddlewares],
+  //   handler: radiologyAdminControllers.getRadiologyRequests,
+  // },
   {
     path: "/",
     method: "post",
@@ -33,12 +33,12 @@ const routes = [
     middleware: [...authMiddlewares],
     handler: radiologyAdminControllers.getCompletedTasks,
   },
-  {
-    path: "/:id",
-    method: "delete",
-    middleware: [...authMiddlewares],
-    handler: radiologyAdminControllers.finishedTask,
-  },
+  // {
+  //   path: "/:id",
+  //   method: "delete",
+  //   middleware: [...authMiddlewares],
+  //   handler: radiologyAdminControllers.finishedTask,
+  // },
 ];
 
 applyRoutes(router, routes);
