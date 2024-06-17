@@ -42,7 +42,7 @@ const routes = [
     path: "/:id",
     method: "delete",
     middleware: [...authMiddlewares],
-    handler: nursingAdminControllers.finishedTask,
+    handler: nursingAdminControllers.deleteOxygenRequest,
   },
 ];
 

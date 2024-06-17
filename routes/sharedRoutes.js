@@ -13,6 +13,7 @@ const verifyToken = require("../middlewares/verifyToken");
 const applyRoutes = require("../utils/routeHelpers");
 const allowedTo = require("../middlewares/allowedTo");
 const employeeSpecialization = require("../utils/employeeSpecialization");
+const employeeRole = require("../utils/employeeRoles");
 
 const router = express.Router();
 const authMiddlewares = [verifyToken];
@@ -22,7 +23,7 @@ const routes = [
     path: "/medicine-requests",
     method: "get",
     middleware: [
-      allowedTo(employeeSpecialization.NURSE, employeeSpecialization.PHARMACY),
+      // allowedTo(employeeSpecialization.NURSE, employeeSpecialization.PHARMACY),
       ...authMiddlewares,
     ],
     handler: medicineRequests,
@@ -31,7 +32,7 @@ const routes = [
     path: "/medicine-requests/:id",
     method: "delete",
     middleware: [
-      allowedTo(employeeSpecialization.NURSE, employeeSpecialization.PHARMACY),
+      // allowedTo(employeeSpecialization.NURSE, employeeSpecialization.PHARMACY),
       ...authMiddlewares,
     ],
     handler: deleteMedicineRequest,
@@ -40,7 +41,7 @@ const routes = [
     path: "/lab-requests",
     method: "get",
     middleware: [
-      allowedTo(employeeSpecialization.LAB, employeeSpecialization.NURSE),
+      // allowedTo(employeeSpecialization.LAB, employeeSpecialization.NURSE),
       ...authMiddlewares,
     ],
     handler: labRequests,
@@ -49,7 +50,7 @@ const routes = [
     path: "/lab-requests/:id",
     method: "delete",
     middleware: [
-      allowedTo(employeeSpecialization.NURSE, employeeSpecialization.LAB),
+      // allowedTo(employeeSpecialization.NURSE, employeeSpecialization.LAB),
       ...authMiddlewares,
     ],
     handler: deleteLabRequest,
@@ -58,10 +59,10 @@ const routes = [
     path: "/radiology-requests",
     method: "get",
     middleware: [
-      allowedTo(
-        employeeSpecialization.NURSE,
-        employeeSpecialization.RADIOLOGIST
-      ),
+      // allowedTo(
+      //   employeeSpecialization.NURSE,
+      //   employeeSpecialization.RADIOLOGIST
+      // ),
       ...authMiddlewares,
     ],
     handler: radiologyRequests,
@@ -70,10 +71,10 @@ const routes = [
     path: "/radiology-requests/:id",
     method: "delete",
     middleware: [
-      allowedTo(
-        employeeSpecialization.NURSE,
-        employeeSpecialization.RADIOLOGIST
-      ),
+      // allowedTo(
+      //   employeeSpecialization.NURSE,
+      //   employeeSpecialization.RADIOLOGIST
+      // ),
       ...authMiddlewares,
     ],
     handler: deleteRadiologyRequest,
@@ -88,7 +89,7 @@ const routes = [
     path: "/patients/:id",
     method: "get",
     middleware: [
-      allowedTo(employeeSpecialization.DOCTOR, employeeSpecialization.MANAGER),
+      // allowedTo(employeeSpecialization.DOCTOR, employeeSpecialization.MANAGER),
       ...authMiddlewares,
     ],
     handler: getPatient,

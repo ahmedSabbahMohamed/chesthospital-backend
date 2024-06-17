@@ -9,10 +9,10 @@ const LabResult = sequelize.define("LabResult", {
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  // name: {
+  //   type: DataTypes.STRING,
+  //   // allowNull: false,
+  // },
   result: {
     type: DataTypes.STRING,
     allowNull: false,

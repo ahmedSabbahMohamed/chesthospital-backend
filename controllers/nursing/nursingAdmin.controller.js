@@ -84,10 +84,20 @@ const getCompletedTasks = asyncWrapper(async (req, res, next) => {
   return res.json({ status: httpStatusText.SUCCESS, data: { tasks } });
 });
 
+const deleteOxygenRequest = asyncWrapper(async (req, res, next) => {
+  const { id } = req.params;
+  await OxygenRequest.destroy({
+    where: {
+      id: id,
+    },
+  });
+});
+
 module.exports = {
   getRequests,
   assignTask,
   finishedTask,
   getCompletedTasks,
   getOxygenRequests,
+  deleteOxygenRequest,
 };
