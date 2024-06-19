@@ -55,11 +55,7 @@ const routes = [
   {
     path: "/lab-result",
     method: "post",
-    middleware: [
-      // validateData.validateLabResultData,
-      upload.array("result", 5),
-      ...authMiddlewares,
-    ],
+    middleware: [upload.any("result"), ...authMiddlewares],
     handler: labEmployeeControllers.addLabResult,
   },
 ];

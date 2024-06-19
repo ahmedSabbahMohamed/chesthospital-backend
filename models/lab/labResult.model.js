@@ -11,7 +11,7 @@ const LabResult = sequelize.define("LabResult", {
   },
   name: {
     type: DataTypes.STRING,
-    // allowNull: false,
+    allowNull: false,
   },
   result: {
     type: DataTypes.STRING,
