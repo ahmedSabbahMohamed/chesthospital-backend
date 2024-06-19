@@ -1,11 +1,11 @@
 const LabResultSchema = {
     type: "object",
     properties: {
-        result: {
+        name: {
             type: "string",
         },
-        notes: {
-            type: "string",
+        result: {
+            type: "file",
         },
         patientId: {
             type: "integer",
@@ -14,7 +14,7 @@ const LabResultSchema = {
             type: "integer",
         },
     },
-    // required: ["result", "notes", "patientId", "doctorId"],
+    // required: ["result", "patientId", "doctorId"],
     additionalProperties: false,
 };
 

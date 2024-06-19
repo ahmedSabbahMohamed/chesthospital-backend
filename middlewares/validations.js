@@ -16,7 +16,7 @@ const medicineRequest = require("../schemas/doctor/medicineRequest.schema");
 const task = require("../schemas/task.schema");
 const labRequest = require("../schemas/doctor/labRequest.schmea");
 const oxygenRequest = require("../schemas/doctor/oxygenRequest.schema");
-const labResult = require("../schemas/lab/labResult.schema");
+// const labResult = require("../schemas/lab/labResult.schema");
 const radiologyResult = require("../schemas/radiologist/radiologyResult.schema");
 const login = require("../schemas/auth/login.schema");
 
@@ -31,7 +31,7 @@ const validateMedicineRequest = ajv.compile(medicineRequest);
 const validateTask = ajv.compile(task);
 const validateLabRequest = ajv.compile(labRequest);
 const validateOxygenRequest = ajv.compile(oxygenRequest);
-const validateLabResult = ajv.compile(labResult);
+// const validateLabResult = ajv.compile(labResult);
 const validateRadiologyResult = ajv.compile(radiologyResult);
 const validateLogin = ajv.compile(login);
 
@@ -79,9 +79,9 @@ const validateOxygenRequestData = (req, res, next) => {
   validateData(validateOxygenRequest, req, res, next);
 };
 
-const validateLabResultData = (req, res, next) => {
-  validateData(validateLabResult, req, res, next);
-};
+// const validateLabResultData = (req, res, next) => {
+//   validateData(validateLabResult, req, res, next);
+// };
 
 const validateRadiologyResultData = (req, res, next) => {
   validateData(validateRadiologyResult, req, res, next);
@@ -103,7 +103,7 @@ module.exports = {
   validateTaskData,
   validateLabRequestData,
   validateOxygenRequestData,
-  validateLabResultData,
+  // validateLabResultData,
   validateRadiologyResultData,
   validateLoginData,
 };

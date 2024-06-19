@@ -9,10 +9,10 @@ const LabResult = sequelize.define("LabResult", {
     autoIncrement: true,
     primaryKey: true,
   },
-  // name: {
-  //   type: DataTypes.STRING,
-  //   // allowNull: false,
-  // },
+  name: {
+    type: DataTypes.STRING,
+    // allowNull: false,
+  },
   result: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -23,9 +23,6 @@ const LabResult = sequelize.define("LabResult", {
     set(value) {
       this.setDataValue("result", value.join(","));
     },
-  },
-  notes: {
-    type: DataTypes.STRING,
   },
   patientId: {
     type: DataTypes.INTEGER,

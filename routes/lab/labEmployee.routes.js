@@ -1,6 +1,6 @@
 const express = require("express");
 const labEmployeeControllers = require("../../controllers/lab/labEmployee.controllers");
-const validateData = require("../../middlewares/validations");
+// const validateData = require("../../middlewares/validations");
 const appError = require("../../utils/appError");
 const multer = require("multer");
 const verfiyToken = require("../../middlewares/verifyToken");
@@ -56,7 +56,7 @@ const routes = [
     path: "/lab-result",
     method: "post",
     middleware: [
-      validateData.validateLabResultData,
+      // validateData.validateLabResultData,
       upload.array("result", 5),
       ...authMiddlewares,
     ],
