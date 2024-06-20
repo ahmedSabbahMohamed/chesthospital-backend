@@ -86,11 +86,17 @@ const getCompletedTasks = asyncWrapper(async (req, res, next) => {
 
 const deleteOxygenRequest = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
-  await OxygenRequest.destroy({
+  const request = await OxygenRequest.destroy({
     where: {
       id: id,
     },
   });
+    if (!request) {
+      return res
+        .status(404)
+        .json({ status: httpStatusText.ERROR, message: "not found request" });
+    }
+    return res.json({ status: httpStatusText.SUCCESS, data: null });
 });
 
 module.exports = {
