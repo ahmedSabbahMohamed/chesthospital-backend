@@ -57,7 +57,7 @@ const routes = [
     method: "post",
     middleware: [
       validateData.validateRadiologyResultData,
-      upload.array("result", 5),
+      upload.any("result"),
       ...authMiddlewares,
     ],
     handler: radiologyDoctorControllers.addRadiologyResult,

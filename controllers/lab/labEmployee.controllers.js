@@ -29,7 +29,7 @@ const completedTask = asyncWrapper(async (req, res, next) => {
 });
 
 const addLabResult = asyncWrapper(async (req, res, next) => {
-  const { patientId, doctorId, name } = req.body;
+  const { patientId, doctorId, name, notes } = req.body;
   if (!req.files || req.files.length === 0) {
     const error = appError.create("No files uploaded", 400);
     return next(error);
@@ -37,6 +37,7 @@ const addLabResult = asyncWrapper(async (req, res, next) => {
 
   const resultPaths = req.files.map((file) => file.filename);
   const results = await LabResult.create({
+    notes,
     patientId,
     doctorId,
     name,

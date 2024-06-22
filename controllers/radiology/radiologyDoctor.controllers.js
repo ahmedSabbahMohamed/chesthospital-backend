@@ -29,7 +29,7 @@ const completedTask = asyncWrapper(async (req, res, next) => {
 });
 
 const addRadiologyResult = asyncWrapper(async (req, res, next) => {
-  const { notes, patientId, doctorId } = req.body;
+  const { notes, patientId, doctorId, name } = req.body;
   if (!req.files || req.files.length === 0) {
     const error = appError.create("No files uploaded", 400)
     return next(error);
@@ -41,6 +41,7 @@ const addRadiologyResult = asyncWrapper(async (req, res, next) => {
     patientId,
     doctorId,
     result: resultPaths,
+    name,
   });
 
   return res.json({
