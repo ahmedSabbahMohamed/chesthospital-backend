@@ -14,6 +14,7 @@ const labAdminRoutes = require("./routes/lab/labAdmin.routes");
 const labEmployeeRoutes = require("./routes/lab/labEmployee.routes");
 const authRoutes = require("./routes/auth/login.routes");
 const sharedRoutes = require("./routes/sharedRoutes");
+const publicRoutes = require("./routes/public.routes");
 const sequelize = require("./config/db");
 const httpStatusText = require("./utils/httpStatusText");
 const errorHandler = require("./middlewares/errorHandler");
@@ -33,6 +34,7 @@ sequelize
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/public", publicRoutes);
 app.use("/api/reception", receptionRoutes);
 app.use("/api/manager", managerRoutes);
 app.use("/api/doctor", doctorRoutes);

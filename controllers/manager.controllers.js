@@ -13,7 +13,8 @@ const addEmployee = asyncWrapper(async (req, res, next) => {
     req.body;
 
   const existingEmployee = await Employee.findByPk(id);
-  if (existingEmployee) {
+  const existingAdmin = await Admin.findByPk(id);
+  if (existingEmployee && existingAdmin) {
     const error = appError.create(
       "Employee already exists",
       400,
@@ -56,6 +57,11 @@ const deleteEmployee = asyncWrapper(async (req, res, next) => {
       id: id,
     },
   });
+  await Admin.destroy({
+    where: {
+      id: id,
+    }
+  })
   if (!employee) {
     const error = appError.create(
       "not found employee",

@@ -2,7 +2,6 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../../config/db");
 const Patient = require("../patient.model");
 const Employee = require("../employee.model");
-const Medicine = require("../pharmacist/medicine.model");
 
 const ExitRequest = sequelize.define("ExitRequest", {
   id: {
